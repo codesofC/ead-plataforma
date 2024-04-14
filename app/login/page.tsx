@@ -106,17 +106,18 @@ const Login = () => {
           </form>
         </div>
       </div>
-      <div className="hidden bg-muted lg:block order-1 col-span-3">
+      <div className="relative hidden bg-muted lg:block order-1 col-span-3">
         <Image
-          src="/assets/loginImg.png"
+          src="/assets/loginm.jpg"
           alt="Image"
-          width="2600"
+          width="1920"
           height="1080"
           className="h-full w-full object-cover"
         />
+        <div className='absolute top-0 left-0 w-full h-full z-10 bg-[rgba(0,0,0,.7)]' />
       </div>
 
-      {isLoading ? <div className='absolute top-0 left-0 w-full h-full flex items-center justify-center'>
+      {isLoading ? <div className='absolute top-0 left-0 w-full h-full flex items-center justify-center z-20'>
         <Loader />
       </div> : null}
     </div>

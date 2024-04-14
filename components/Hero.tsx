@@ -68,15 +68,15 @@ const Hero = () => {
               </div>
               <div className="flex flex-col items-center">
                 <span className="text-gray-600"> UAs </span>
-                <span className="font-bold"> {(userData?.semestre - 1)*40}/{coursesData?.totalClasses} </span>
+                <span className="font-bold"> {(userData?.semestre*4)-2}/{coursesData?.totalClasses} </span>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="flex md:flex-col gap-4 items-center md:justify-center">
-        <div className="relative flex gap-4 bg-white rounded-xl py-4 pl-4 md:pl-8 pr-12 sm:pr-20 cursor-pointer group">
+      <div className="flex lg:flex-col gap-2 md:gap-4 items-center md:justify-center">
+        <div className="relative flex flex-col sm:flex-row gap-4 bg-white rounded-xl py-4 pl-4 md:pl-8 pr-12 sm:pr-20 cursor-pointer group">
           <div className="w-10">
             <Image
               src={"/assets/stats.png"}
@@ -95,7 +95,7 @@ const Hero = () => {
           </div>
           <div className="w-full h-full absolute top-0 left-0 z-10 bg-[rgba(0,0,0,.1)] rounded-xl hidden group-hover:flex" />
         </div>
-        <div className="relative flex gap-4 bg-white rounded-xl py-4 pl-4 md:pl-8 pr-12 sm:pr-20 cursor-pointer group">
+        <div className="relative flex flex-col sm:flex-row gap-4 bg-white rounded-xl py-4 pl-4 md:pl-8 pr-12 sm:pr-20 cursor-pointer group">
           <div className="w-10">
             <Image
               src={"/assets/object.png"}

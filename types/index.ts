@@ -4,7 +4,8 @@ import { Dispatch, SetStateAction } from "react"
 
 export type SidebarProps = {
     open: boolean,
-    setOpen: Dispatch<SetStateAction<boolean>>
+    setOpen: Dispatch<SetStateAction<boolean>>,
+    showSideBar: () => void
 }
 
 export type CourseProps = {

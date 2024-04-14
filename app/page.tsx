@@ -11,13 +11,13 @@ export default function Home() {
 
   return (
     <MyLayout>
-      <main className="w-full flex flex-col gap-12 px-0 md:px-6 lg:px-12">
+      <main className="w-full flex flex-col gap-12 px-0 md:px-6 lg:px-12 mb-16">
         <Hero />
         <div className="flex flex-col gap-6 px-6 md:px-0">
           <h1 className="font-bold"> Disciplinas iniciadas </h1>
           <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 justify-center">
             {coursesData?.modules.map((module: CourseProps) =>
-              module.inSemestre === userData?.semestre ? (
+              module.inSemestre === userData?.semestre && module?.progress > 0 ? (
                 <Course
                   key={module.id}
                   singleCourse={{

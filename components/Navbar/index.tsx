@@ -14,7 +14,7 @@ const Navbar = ({ open, setOpen }: SidebarProps) => {
     <nav className="w-full h-[10vh] border flex justify-between items-center px-6 md:px-16 py-2 shadow-md">
       <div className="flex items-center gap-4">
         <Menu className="flex md:hidden cursor-pointer" onClick={() => setOpen(!open)} />
-        <div className="w-[175px]">
+        <div className="w-[132px] md:w-[175px]">
           <Image
             src={"/assets/logo.png"}
             width={320}

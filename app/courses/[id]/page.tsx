@@ -28,7 +28,7 @@ const Id = ({ params }: { params: { [key: string]: string } }) => {
 
   return !isLoading ? (
     <main className="w-full mb-32">
-      <NavCourse title="Banco de Dados" />
+      <NavCourse title={courseFind?.title} />
       <HeroCourse progress={courseFind?.progress} image={courseFind?.image} />
       <div className="flex flex-col gap-6 mt-12 px-4 md:px-8 lg:px-16 xl:px-32">
         <h1 className="font-bold text-xl"> Seu Conteúdo </h1>

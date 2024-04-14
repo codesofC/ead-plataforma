@@ -14,7 +14,7 @@ export function User() {
     <Popover>
       <PopoverTrigger asChild>
         <Avatar
-          className="relative p-6 bg-red-700 text-white cursor-pointer"
+          className="relative p-6 bg-principal text-white cursor-pointer"
         >
           <AvatarFallback className="font-bold w-full h-full">
             {userData?.firstName.charAt(0)}{userData?.lastName.charAt(0)}

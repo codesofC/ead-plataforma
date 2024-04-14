@@ -15,6 +15,8 @@ const Course = ({ singleCourse }: ItemProps) => {
 
   const { domain, progress, title, image, teacher, id } = singleCourse;
 
+  let progressWidth = 'w-['+progress.toString()+'%]'
+
   return (
     <div 
       className="overflow-hidden border rounded-xl shadow-md hover:shadow-xl cursor-pointer"
@@ -42,8 +44,10 @@ const Course = ({ singleCourse }: ItemProps) => {
         </div>
         <div className="w-full flex justify-between items-center">
           <div className="relative w-1/2 flex flex-col gap-1">
-            <div className="relative w-full h-1 bg-gray-400 rounded-full overflow-hidden">
-              <div className={`block bg-green-700 w-[${progress}%] h-full`} />
+            <div className="relative flex items-start justify-start w-full h-1 bg-gray-400 rounded-full overflow-hidden">
+              <div className={`flex bg-green-700 h-full`} style={{width: progress.toString()+'%'}}>
+                
+              </div>
             </div>
             <span className="text-sm"> Progresso: {progress}% </span>
           </div>

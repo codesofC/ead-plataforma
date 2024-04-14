@@ -5,28 +5,22 @@ import { initializeApp } from "firebase/app";
 import { getAuth, 
   signInWithEmailAndPassword, 
   onAuthStateChanged, 
-  signOut,  
-  NextOrObserver,
-  User} from "firebase/auth";
+  signOut} from "firebase/auth";
 import { getFirestore, 
   doc, 
   getDoc, 
-  collection, 
-  query, 
-  where, 
-  getDocs, 
   DocumentData
 } from "firebase/firestore";
-import { CourseProps, FirebaseProps, UserDataProps } from '@/types/index';
+import { FirebaseProps } from '@/types/index';
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAsJqdCyUNB893TdbheJNEgNwPBdbCa0tA",
-  authDomain: "ead-plataforma-aadf3.firebaseapp.com",
-  projectId: "ead-plataforma-aadf3",
-  storageBucket: "ead-plataforma-aadf3.appspot.com",
-  messagingSenderId: "963989540827",
-  appId: "1:963989540827:web:032f74e18791f0f88be1fe"
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MENSSAGING_SENDER_ID,
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
 };
 
 // Initialize Firebase

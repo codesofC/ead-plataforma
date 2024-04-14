@@ -26,7 +26,7 @@ const LearningUnit = ({
           </div>
         ) : null}
         <div className="flex flex-col gap-6 justify-between">
-          <h1 className="text-sm sm:text-md lg:text-lg font-semibold">
+          <h1 className="text-sm sm:text-md lg:text-lg font-semibold flex flex-wrap">
             {" "}
             {title}{" "}
           </h1>

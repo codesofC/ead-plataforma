@@ -23,8 +23,8 @@ const HeroCourse = ({ progress, image }: { progress: number, image: string}) => 
   ];
 
   return (
-    <section className="w-full h-[30vh] grid grid-cols-1 md:grid-cols-2 border bg-gray-50 overflow-hidden">
-      <div className="flex flex-col gap-6 py-12 px-6 lg:px-12 items-center md:items-start justify-between h-full">
+    <section className="w-full h-auto md:h-[30vh] grid grid-cols-1 md:grid-cols-2 border bg-gray-50 overflow-hidden">
+      <div className="flex flex-col gap-6 py-6 md:py-12 px-6 lg:px-12 items-center md:items-start justify-between h-full">
         <div className="flex flex-col gap-4 items-center md:items-start">
           <div className="flex gap-4 items-center">
             {icons.map((item, index) => (
@@ -37,7 +37,7 @@ const HeroCourse = ({ progress, image }: { progress: number, image: string}) => 
             Que bom de ter ver aqui. O que vamos estudar hoje?
           </p>
         </div>
-        <div className="flex flex-col gap-2 p-4 border bg-white">
+        <div className="flex flex-col gap-2 p-2 md:p-4 border bg-white">
            <span className="text-sm text-gray-500">Progresso da disciplina</span> 
            <p>
                 <span className="text-2xl text-green-700 font-semibold">{ progress }%</span>
@@ -45,7 +45,7 @@ const HeroCourse = ({ progress, image }: { progress: number, image: string}) => 
            </p>
         </div>
       </div>
-      <div className="w-full overflow-hidden">
+      <div className="w-full hidden md:flex overflow-hidden">
         <Image 
             src={image}
             width={920}

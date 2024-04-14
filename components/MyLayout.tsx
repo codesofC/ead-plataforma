@@ -19,20 +19,39 @@ const MyLayout = ({ children }: { children: React.ReactNode }) => {
       getUser,
       setUserData,
       getClasses,
-      setCoursesData
+      setCoursesData,
+      setUserId
      } = useFirebase();
 
     const router = useRouter();
+
+    let timer: NodeJS.Timeout
   
     useEffect(() => {
+
+      if(window.innerWidth > 780){
+        setOpenSidebar(true)
+      }
+
       verificationConnection(userCredential => {
-        !userCredential ? router.push('/login') : setIsLoading(false)
+        !userCredential ? router.push('/login') : () => {
+          if(userId===""){
+            setUserId(userCredential.uid)
+            console.log(userCredential)
+          }
+        }
+        timer = setTimeout(() => {
+          setIsLoading(false)
+        }, 1000)
       })
       
       if(!isLoading){
         fetchDataUser()
       }
       
+      return () => {
+        clearTimeout(timer)
+      }
     }, [])
 
     const fetchDataUser = async () => {
@@ -53,11 +72,19 @@ const MyLayout = ({ children }: { children: React.ReactNode }) => {
 
     }
 
+    const handleSideBar = () => {
+      if(window.innerWidth > 780){
+        setOpenSidebar(true)
+      }else{
+        setOpenSidebar(false)
+      }
+    }
+
   return !isLoading ? (
     <div className='relative flex overflow-hidden w-full h-screen'>
-        <Sidebar open={openSidebar} setOpen={setOpenSidebar} />
+        <Sidebar open={openSidebar} setOpen={setOpenSidebar} showSideBar={handleSideBar} />
         <div className={`flex flex-col ${openSidebar ? 'flex-1 md:flex-[0.9]' : 'flex-1 md:flex-[0.97]'} transition-[flex] duration-75 overflow-y-auto`}>
-          <Navbar open={openSidebar} setOpen={setOpenSidebar} />
+          <Navbar open={openSidebar} setOpen={setOpenSidebar} showSideBar={handleSideBar} />
           <div className="">{children}</div>
         </div>
     </div>
