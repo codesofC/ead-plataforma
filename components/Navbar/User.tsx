@@ -4,8 +4,11 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { PopUser } from "./PopUser";
 import { Popover, PopoverTrigger } from "@radix-ui/react-popover";
+import { useFirebase } from "@/lib/Firebase/useFirebase";
 
 export function User() {
+
+  const { userData } = useFirebase()
 
   return (
     <Popover>
@@ -14,7 +17,7 @@ export function User() {
           className="relative p-6 bg-red-700 text-white cursor-pointer"
         >
           <AvatarFallback className="font-bold w-full h-full">
-            JI
+            {userData?.firstName.charAt(0)}{userData?.lastName.charAt(0)}
           </AvatarFallback>
         </Avatar>
       </PopoverTrigger>

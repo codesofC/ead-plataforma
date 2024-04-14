@@ -1,8 +1,13 @@
-import { GraduationCap, LibraryBig } from "lucide-react";
+'use client'
+
+import { useFirebase } from "@/lib/Firebase/useFirebase";
 import Image from "next/image";
 import React from "react";
 
 const Hero = () => {
+
+  const { userData, coursesData } = useFirebase()
+
   return (
     <section className="w-full h-auto lg:h-[30vh] flex flex-col lg:flex-row gap-6 justify-between border overflow-hidden rounded-bl-xl rounded-br-xl shadow-sm bg-gray-100 px-6 pb-6 lg:pb-0">
       <div className="flex gap-12">
@@ -17,7 +22,7 @@ const Hero = () => {
         </div>
         <div className="flex flex-col gap-12 mt-8">
           <div className="flex flex-col gap-1">
-            <h3 className="text-2xl font-bold"> Olá Judelin👋🏾</h3>
+            <h3 className="text-2xl font-bold"> Olá {userData?.firstName}👋🏾</h3>
             <p className="font-extralight"> Seja bem-vindo!</p>
           </div>
           <div className="flex gap-4 items-center">
@@ -33,7 +38,7 @@ const Hero = () => {
               </div>
               <div className="flex flex-col items-center">
                 <span className="text-gray-600"> Semestre </span>
-                <span className="font-bold"> 3/6 </span>
+                <span className="font-bold"> {userData?.semestre}/{coursesData?.totalSemestre} </span>
               </div>
             </div>
             <div className="flex flex-col items-center gap-1">
@@ -48,7 +53,7 @@ const Hero = () => {
               </div>
               <div className="flex flex-col items-center">
                 <span className="text-gray-600"> Modulos </span>
-                <span className="font-bold"> 8/24 </span>
+                <span className="font-bold"> {(userData?.semestre - 1)*4}/{coursesData?.totalModules} </span>
               </div>
             </div>
             <div className="flex flex-col items-center gap-1">
@@ -63,7 +68,7 @@ const Hero = () => {
               </div>
               <div className="flex flex-col items-center">
                 <span className="text-gray-600"> UAs </span>
-                <span className="font-bold"> 80/240 </span>
+                <span className="font-bold"> {(userData?.semestre - 1)*40}/{coursesData?.totalClasses} </span>
               </div>
             </div>
           </div>

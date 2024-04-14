@@ -4,8 +4,12 @@ import { Search } from "lucide-react";
 import Course from "@/components/Course";
 import { FilterComponent } from "@/components/FilterComponent";
 import MyLayout from "@/components/MyLayout";
+import { useFirebase } from "@/lib/Firebase/useFirebase";
+import { CourseProps } from "@/types/index";
 
 const Courses = () => {
+
+  const { coursesData, userData } = useFirebase()
   
   return (
     <MyLayout>
@@ -29,46 +33,21 @@ const Courses = () => {
         <div className="mt-12 flex flex-col gap-12">
           <h2 className="text-xl font-semibold uppercase"> Em andamento </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6">
-            <Course
-              singleCourse={{
-                domain: "Analise e Desenvolvimento de Sistema",
-                linkImage:
-                  "https://cloudandata.com.br/wp-content/uploads/2023/06/FundamentosDeBancoDeDados-scaled-e1686797826572.webp",
-                percent: 20,
-                professor: "Cristooo Junior",
-                title: "Banco de dados",
-              }}
-            />
-            <Course
-              singleCourse={{
-                domain: "Analise e Desenvolvimento de Sistema",
-                linkImage:
-                  "https://hermes.digitalinnovation.one/articles/cover/5b900809-4057-4edf-ace1-92a4464c6075.png",
-                percent: 30,
-                professor: "Cristooo Junior",
-                title: "Banco de dados",
-              }}
-            />
-            <Course
-              singleCourse={{
-                domain: "Analise e Desenvolvimento de Sistema",
-                linkImage:
-                  "https://ctrlplay.com.br/wp-content/uploads/2022/12/Banner-Blog-1.png",
-                percent: 30,
-                professor: "Cristooo Junior",
-                title: "Banco de dados",
-              }}
-            />
-            <Course
-              singleCourse={{
-                domain: "Analise e Desenvolvimento de Sistema",
-                linkImage:
-                  "https://i.ytimg.com/vi/k2-JCuE-Dqg/maxresdefault.jpg",
-                percent: 30,
-                professor: "Cristooo Junior",
-                title: "Banco de dados",
-              }}
-            />
+          {coursesData?.modules.map((module: CourseProps) =>
+              module.inSemestre === userData?.semestre ? (
+                <Course
+                  key={module.id}
+                  singleCourse={{
+                    id: module.id,
+                    domain: coursesData?.name,
+                    title: module.title,
+                    progress: module.progress,
+                    teacher: module.teacher,
+                    image: module.image
+                  }}
+                />
+              ) : null
+            )}
           </div>
         </div>
       </main>

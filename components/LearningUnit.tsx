@@ -1,23 +1,23 @@
-import { CourseProps, LearningUnitProps } from "@/types/index";
+import { LearningUnitProps } from "@/types/index";
 import { CalendarClock, ChevronRight } from "lucide-react";
 import Image from "next/image";
 import { Button } from "./ui/button";
 
 const LearningUnit = ({
-  linkImage,
-  percent,
+  image,
   title,
-  term,
+  expire,
+  checked
 }: LearningUnitProps) => {
 
   return (
     <div className="relative w-full flex items-center justify-between px-8 py-4 cursor-pointer group shadow-sm hover:shadow-md rounded-md border overflow-hidden">
       <div className="w-2 h-full absolute left-0 top-0 bg-principal" />
       <div className="flex items-center gap-2">
-        {linkImage ? (
+        {image ? (
           <div className="w-[75px] lg:w-[120px] h-[75px] lg:h-[120px]">
             <Image
-              src={linkImage}
+              src={image}
               width={500}
               height={500}
               alt="UA imagem"
@@ -30,17 +30,12 @@ const LearningUnit = ({
             {" "}
             {title}{" "}
           </h1>
-          {percent ? (
-            <div className="flex flex-col md:flex-row gap-4 md:items-center">
-              <div className="w-[150px] h-1 bg-gray-400 rounded-full overflow-hidden">
-                <div className={`h-full w-[10%] bg-green-700`} />
-              </div>
-              <div className="flex items-center gap-1 text-gray-400">
-                <CalendarClock size={18} color={"gray"} />
-                <div className="text-[12px] sm:text-sm font-extralight">
-                  <span className="font-bold">Prazo: </span>
-                  10/04/2024 - 23:59
-                </div>
+          {expire ? (
+            <div className="flex items-center gap-1 text-gray-400">
+              <CalendarClock size={18} color={"gray"} />
+              <div className="text-[12px] sm:text-sm font-extralight">
+                <span className="font-bold">Prazo: </span>
+                <span>10/05/2024 - 23:59</span>
               </div>
             </div>
           ) : null}
@@ -50,6 +45,7 @@ const LearningUnit = ({
       <input
         type={"radio"}
         className="relative hidden lg:flex group-hover:hidden"
+        checked={checked}
       />
       <Button className="items-center gap-1 hidden bg-principal text-white text-sm lg:text-lg py-4 px-2 lg:py-8 lg:px-6 lg:group-hover:flex">
         Iniciar

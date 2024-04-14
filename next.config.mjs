@@ -12,7 +12,7 @@ const nextConfig = {
             {
                 protocol: "http",
                 hostname: "**"
-            }
+            },
         ],
         minimumCacheTTL: 1500000
     },
