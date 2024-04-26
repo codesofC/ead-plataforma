@@ -1,15 +1,17 @@
-'use client'
+"use client";
 
 import { useFirebase } from "@/lib/Firebase/useFirebase";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import React from "react";
 
 const Hero = () => {
+  const { userData, coursesData } = useFirebase();
 
-  const { userData, coursesData } = useFirebase()
+  const router = useRouter()
 
   return (
-    <section className="w-full h-auto lg:h-[30vh] flex flex-col lg:flex-row gap-6 justify-between border overflow-hidden rounded-bl-xl rounded-br-xl shadow-sm bg-gray-100 px-6 pb-6 lg:pb-0">
+    <section className="relative w-full h-auto lg:h-[30vh] flex flex-col lg:flex-row gap-6 justify-between border overflow-hidden rounded-bl-xl rounded-br-xl shadow-sm bg-gray-100 px-6 pb-6 lg:pb-0">
       <div className="flex gap-12">
         <div className="items-center justify-center hidden md:flex lg:hidden xl:flex">
           <Image
@@ -38,7 +40,10 @@ const Hero = () => {
               </div>
               <div className="flex flex-col items-center">
                 <span className="text-gray-600"> Semestre </span>
-                <span className="font-bold"> {userData?.semestre}/{coursesData?.totalSemestre} </span>
+                <span className="font-bold">
+                  {" "}
+                  {userData?.semestre}/{coursesData?.totalSemestre}{" "}
+                </span>
               </div>
             </div>
             <div className="flex flex-col items-center gap-1">
@@ -53,7 +58,10 @@ const Hero = () => {
               </div>
               <div className="flex flex-col items-center">
                 <span className="text-gray-600"> Modulos </span>
-                <span className="font-bold"> {(userData?.semestre - 1)*4}/{coursesData?.totalModules} </span>
+                <span className="font-bold">
+                  {" "}
+                  {(userData?.semestre - 1) * 4}/{coursesData?.totalModules}{" "}
+                </span>
               </div>
             </div>
             <div className="flex flex-col items-center gap-1">
@@ -68,16 +76,19 @@ const Hero = () => {
               </div>
               <div className="flex flex-col items-center">
                 <span className="text-gray-600"> UAs </span>
-                <span className="font-bold"> {(userData?.semestre*4)-2}/{coursesData?.totalClasses} </span>
+                <span className="font-bold">
+                  {" "}
+                  {userData?.semestre * 4 - 2}/{coursesData?.totalClasses}{" "}
+                </span>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="flex lg:flex-col gap-2 md:gap-4 items-center md:justify-center">
-        <div className="relative flex flex-col sm:flex-row gap-4 bg-white rounded-xl py-4 pl-4 md:pl-8 pr-12 sm:pr-20 cursor-pointer group">
-          <div className="w-10">
+      <div className="absolute right-8 top-4 hidden lg:flex gap-2 md:gap-4 items-center md:justify-center">
+        <div className="relative flex max-sm:flex-col gap-2 items-end cursor-pointer hover:scale-105 transition-transform" onClick={() => router.push("/notes")}>
+          <div className="size-8">
             <Image
               src={"/assets/stats.png"}
               width={320}
@@ -87,16 +98,14 @@ const Hero = () => {
             />
           </div>
           <div className="flex flex-col gap-1">
-            <span className="text-sm sm:text-lg font-extralight">
+            <span className="">
               {" "}
               Minhas notas{" "}
-            </span>
-            <span className="text-md sm:text-md font-bold"> Visualizar </span>
+            </span>{" "}
           </div>
-          <div className="w-full h-full absolute top-0 left-0 z-10 bg-[rgba(0,0,0,.1)] rounded-xl hidden group-hover:flex" />
         </div>
-        <div className="relative flex flex-col sm:flex-row gap-4 bg-white rounded-xl py-4 pl-4 md:pl-8 pr-12 sm:pr-20 cursor-pointer group">
-          <div className="w-10">
+        <div className=" relative flex max-sm:flex-col gap-2 items-end cursor-pointer hover:scale-105 transition-transform" onClick={() => router.push("/courses")}>
+          <div className="size-8">
             <Image
               src={"/assets/object.png"}
               width={320}
@@ -106,13 +115,11 @@ const Hero = () => {
             />
           </div>
           <div className="flex flex-col gap-1">
-            <span className="text-sm sm:text-lg font-extralight">
+            <span className="">
               {" "}
               Meus cursos{" "}
             </span>
-            <span className="text-md sm:text-md font-bold"> Continuar </span>
           </div>
-          <div className="w-full h-full absolute top-0 left-0 z-10 bg-[rgba(0,0,0,.1)] rounded-xl hidden group-hover:flex" />
         </div>
       </div>
     </section>

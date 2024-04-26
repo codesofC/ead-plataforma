@@ -5,7 +5,8 @@ import { initializeApp } from "firebase/app";
 import { getAuth, 
   signInWithEmailAndPassword, 
   onAuthStateChanged, 
-  signOut} from "firebase/auth";
+  signOut,
+  User} from "firebase/auth";
 import { getFirestore, 
   doc, 
   getDoc, 
@@ -33,16 +34,12 @@ const Firebase = ({ children }: { children: React.ReactNode }) => {
   const auth = getAuth(app)
   const db = getFirestore(app)
 
-  const [userId, setUserId] = useState("")
-  const [isLoading, setIsLoading] = useState(true)
+  const [userSession, setUserSession] = useState<User | null>(null)
   const [userData, setUserData] = useState<DocumentData | undefined>()
   const [coursesData, setCoursesData] = useState<DocumentData | undefined>()
 
   //Connection User
   const signInUser = (email: string, password: string) => signInWithEmailAndPassword(auth, email, password)
-
-  //Look if the user is already connected
-  const verificationConnection = (userFunction: (user: any) => void) => onAuthStateChanged(auth, userFunction)
 
   //SignOut
   const signOutUser = () => signOut(auth)
@@ -66,19 +63,17 @@ const Firebase = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <FirebaseContext.Provider value={{
-      isLoading,
+      userSession,
+      setUserSession,
       getClasses,
       getUser,
-      setIsLoading,
-      setUserId,
       signInUser,
       signOutUser,
-      userId,
-      verificationConnection,
       userData,
       setCoursesData,
       setUserData,
-      coursesData
+      coursesData,
+      auth
     }}>
       { children }
     </FirebaseContext.Provider>

@@ -18,13 +18,10 @@ const Login = () => {
   const [error, setError] = useState("");
   const [access, setAccess] = useState(false)
 
-  const { setIsLoading, isLoading, signInUser, setUserId } = useFirebase();
+  const { signInUser } = useFirebase();
 
   const router = useRouter();
 
-  useEffect(() => {
-    setIsLoading(false);
-  }, []);
 
   // Handle the value of inputs elements onChange with the id tag
   const handleForm = (event: ChangeEvent<HTMLInputElement>) => {
@@ -34,21 +31,18 @@ const Login = () => {
     }));
   };
 
+
   //Submit the datas to connect the user
   const handleSubmit = (e: SyntheticEvent) => {
     e.preventDefault();
 
-    setIsLoading(true);
     signInUser(formUser.email, formUser.password)
       .then((userCredential) => {
         //Success connection, get the userId and redirect to home page
         setFormUser({ email: "", password: "" });
-        setUserId(userCredential.user.uid);
         router.push("/");
-        setIsLoading(false);
       })
       .catch((err) => {
-        setIsLoading(false);
         setError("Email ou Senha incorreto");
       });
   };
@@ -70,7 +64,7 @@ const Login = () => {
             <span 
               className="text-sm bg-principal p-1 rounded-sm cursor-pointer text-white"
               onClick={() => setAccess(!access)}
-            >Accesso</span>
+            >Acesso</span>
             <div className={`${access ? 'flex' : 'hidden'} flex-col font-extralight text-xs p-3 bg-gray-200 rounded-sm`}>
               <span>Email: xyz@gmail.com ou inelusjudelin01@gmail.com</span>
               <span>Senha: 123456</span>
@@ -120,12 +114,6 @@ const Login = () => {
         />
         <div className="absolute top-0 left-0 w-full h-full z-10 bg-[rgba(0,0,0,.7)]" />
       </div>
-
-      {isLoading ? (
-        <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center z-20">
-          <Loader />
-        </div>
-      ) : null}
     </div>
   );
 };

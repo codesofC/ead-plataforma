@@ -1,8 +1,11 @@
+import MyLayout from '@/components/MyLayout'
 import React from 'react'
 
 const Notes = () => {
   return (
-    <div>Notes</div>
+    <MyLayout>
+      Notes
+    </MyLayout>
   )
 }
 

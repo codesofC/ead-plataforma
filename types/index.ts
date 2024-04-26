@@ -1,4 +1,4 @@
-import { Unsubscribe, UserCredential } from "firebase/auth"
+import { Auth, Unsubscribe, User, UserCredential } from "firebase/auth"
 import { DocumentData } from "firebase/firestore"
 import { Dispatch, SetStateAction } from "react"
 
@@ -32,12 +32,9 @@ export type UserDataProps = {
 }
 
 export type FirebaseProps = {
-  userId: string,
-  setUserId: Dispatch<SetStateAction<string>>,
-  isLoading: boolean,
-  setIsLoading: Dispatch<SetStateAction<boolean>>,
+  userSession: User | null,
+  setUserSession: Dispatch<SetStateAction<User | null>>,
   signInUser: (email: string, password: string) => Promise<UserCredential>,
-  verificationConnection: (userFunction: (user: any) => void) => Unsubscribe,
   signOutUser: () => Promise<void>,
   getUser: (uid: string) => Promise<DocumentData | undefined>,
   getClasses: (id: string) => Promise<DocumentData | undefined>,
@@ -45,6 +42,7 @@ export type FirebaseProps = {
   setUserData: Dispatch<SetStateAction<DocumentData | undefined>>,
   coursesData: DocumentData | undefined,
   setCoursesData: Dispatch<SetStateAction<DocumentData | undefined>>,
+  auth: Auth
 }
 
 export type FormUserProps = {
