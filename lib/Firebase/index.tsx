@@ -30,9 +30,9 @@ const app = initializeApp(firebaseConfig);
 //Initialize context
 export const FirebaseContext = createContext<FirebaseProps | null>(null)
 
+export const db = getFirestore(app)
 const Firebase = ({ children }: { children: React.ReactNode }) => {
   const auth = getAuth(app)
-  const db = getFirestore(app)
 
   const [userSession, setUserSession] = useState<User | null>(null)
   const [userData, setUserData] = useState<DocumentData | undefined>()

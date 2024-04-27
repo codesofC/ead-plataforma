@@ -6,7 +6,9 @@ import Navbar from "./Navbar/index";
 import { useRouter } from "next/navigation";
 import { useFirebase } from "@/lib/Firebase/useFirebase";
 import Loader from "./Loader";
-import { onAuthStateChanged, User } from "firebase/auth";
+import { onAuthStateChanged } from "firebase/auth";
+import { doc, setDoc } from "firebase/firestore";
+import { db } from "@/lib/Firebase/index";
 
 const MyLayout = ({ children }: { children: React.ReactNode }) => {
   const [openSidebar, setOpenSidebar] = useState(false);
@@ -18,7 +20,7 @@ const MyLayout = ({ children }: { children: React.ReactNode }) => {
     setCoursesData,
     auth,
     setUserSession,
-    userSession
+    userSession,
   } = useFirebase();
 
   const router = useRouter();
@@ -31,16 +33,16 @@ const MyLayout = ({ children }: { children: React.ReactNode }) => {
 
   useEffect(() => {
     let list = onAuthStateChanged(auth, (user) => {
-      user ? setUserSession(user) : router.push("/login")
-    })
+      user ? setUserSession(user) : router.push("/login");
+    });
 
-    if(userSession){
-      fetchDataUser(userSession.uid)
+    if (userSession) {
+      fetchDataUser(userSession.uid);
     }
 
     return () => {
-      list()
-    }
+      list();
+    };
   }, [userSession]);
 
   const fetchDataUser = async (uid: string) => {
@@ -52,6 +54,8 @@ const MyLayout = ({ children }: { children: React.ReactNode }) => {
         getClasses(data?.courseId)
           .then((course) => {
             setCoursesData(course);
+            /*const cityRef = doc(db, `students/${uid}`);
+            setDoc(cityRef, course);*/
           })
           .catch((error) => {
             console.log("Not course found!");

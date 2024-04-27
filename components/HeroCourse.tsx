@@ -6,29 +6,29 @@ const HeroCourse = ({ progress, image }: { progress: number, image: string}) => 
   const icons = [
     {
       title: "Grade de notas",
-      icon: <BookOpenCheck size={28} />,
+      icon: <BookOpenCheck size={28} color={"white"} />,
     },
     {
       title: "Grupos",
-      icon: <Users size={28} />,
+      icon: <Users size={28} color={"white"} />,
     },
     {
       title: "Mensagens",
-      icon: <Mail size={28} />,
+      icon: <Mail size={28} color={"white"} />,
     },
     {
       title: "Apoio acadêmico",
-      icon: <HeartHandshake size={28} />,
+      icon: <HeartHandshake size={28} color={"white"} />,
     },
   ];
 
   return (
-    <section className="w-full h-auto md:h-[30vh] grid grid-cols-1 md:grid-cols-2 border bg-gray-50 overflow-hidden">
+    <section className="w-full h-auto md:h-[35vh] grid grid-cols-1 md:grid-cols-2 border bg-gray-50 overflow-hidden">
       <div className="flex flex-col gap-6 py-6 md:py-12 px-6 lg:px-12 items-center md:items-start justify-between h-full">
         <div className="flex flex-col gap-4 items-center md:items-start">
           <div className="flex gap-4 items-center">
             {icons.map((item, index) => (
-              <div key={index} title={item.title} className="cursor-pointer p-2 bg-white rounded-md shadow-md">
+              <div key={index} title={item.title} className="cursor-pointer p-2 bg-principal rounded-md shadow-md">
                 {item.icon}
               </div>
             ))}
