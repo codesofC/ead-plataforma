@@ -42,10 +42,24 @@ export type FirebaseProps = {
   setUserData: Dispatch<SetStateAction<DocumentData | undefined>>,
   coursesData: DocumentData | undefined,
   setCoursesData: Dispatch<SetStateAction<DocumentData | undefined>>,
-  auth: Auth
+  auth: Auth,
+  isLoading: boolean,
+  setIsLoading: Dispatch<SetStateAction<boolean>>
 }
 
 export type FormUserProps = {
   email: string,
   password: string
+}
+
+export type MessageProps = {
+  id: number;
+  title: string;
+  author: {
+    firstName: string;
+    lastName: string;
+  };
+  content: string;
+  date: Date;
+  module: string[];
 }

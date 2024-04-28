@@ -13,15 +13,18 @@ import {
   X,
 } from "lucide-react";
 import { SidebarProps } from "@/types/index";
+import { useFirebase } from "@/lib/Firebase/useFirebase";
 
 
 
 const Sidebar = ({ open, setOpen, showSideBar }: SidebarProps) => {
 
   const router = useRouter()
+  const {setIsLoading} = useFirebase()
 
   const goTo = (link: string):void => {
     showSideBar()
+    setIsLoading(true)
     router.push(link)
   }
 

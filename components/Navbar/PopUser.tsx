@@ -5,15 +5,14 @@ import Popup from "./Popup";
 
 export function PopUser() {
 
-  const { signOutUser, userData } = useFirebase()
+  const { signOutUser, userData, setIsLoading } = useFirebase()
 
   const router = useRouter()
 
   const signOutFn = () => {
+    setIsLoading(true)
     signOutUser().then(() => {
-      setTimeout(() => {
         router.push("/login")
-      }, 500)
     })
   }
 

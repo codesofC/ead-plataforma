@@ -7,8 +7,7 @@ import { useRouter } from "next/navigation";
 import { useFirebase } from "@/lib/Firebase/useFirebase";
 import Loader from "./Loader";
 import { onAuthStateChanged } from "firebase/auth";
-import { doc, setDoc } from "firebase/firestore";
-import { db } from "@/lib/Firebase/index";
+
 
 const MyLayout = ({ children }: { children: React.ReactNode }) => {
   const [openSidebar, setOpenSidebar] = useState(false);
@@ -21,11 +20,14 @@ const MyLayout = ({ children }: { children: React.ReactNode }) => {
     auth,
     setUserSession,
     userSession,
+    isLoading,
+    setIsLoading
   } = useFirebase();
 
   const router = useRouter();
 
   useEffect(() => {
+    setIsLoading(false)
     if (window.innerWidth > 780) {
       setOpenSidebar(true);
     }
@@ -77,7 +79,7 @@ const MyLayout = ({ children }: { children: React.ReactNode }) => {
     }
   };
 
-  return userSession ? (
+  return userSession && !isLoading ? (
     <div className="relative flex overflow-hidden w-full h-screen">
       <Sidebar
         open={openSidebar}

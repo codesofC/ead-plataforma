@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, ChangeEvent, SyntheticEvent } from "react";
+import { useState, ChangeEvent, SyntheticEvent } from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -8,7 +8,6 @@ import { Label } from "@/components/ui/label";
 import { FormUserProps } from "@/types/index";
 import { useFirebase } from "@/lib/Firebase/useFirebase";
 import { useRouter } from "next/navigation";
-import Loader from "@/components/Loader";
 
 const Login = () => {
   const [formUser, setFormUser] = useState<FormUserProps>({

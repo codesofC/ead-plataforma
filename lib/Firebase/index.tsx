@@ -37,6 +37,7 @@ const Firebase = ({ children }: { children: React.ReactNode }) => {
   const [userSession, setUserSession] = useState<User | null>(null)
   const [userData, setUserData] = useState<DocumentData | undefined>()
   const [coursesData, setCoursesData] = useState<DocumentData | undefined>()
+  const [isLoading, setIsLoading] = useState<boolean>(false)
 
   //Connection User
   const signInUser = (email: string, password: string) => signInWithEmailAndPassword(auth, email, password)
@@ -73,7 +74,9 @@ const Firebase = ({ children }: { children: React.ReactNode }) => {
       setCoursesData,
       setUserData,
       coursesData,
-      auth
+      auth,
+      isLoading,
+      setIsLoading
     }}>
       { children }
     </FirebaseContext.Provider>
