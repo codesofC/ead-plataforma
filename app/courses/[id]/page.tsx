@@ -1,23 +1,23 @@
 "use client";
 
-import { useEffect } from "react";
 import HeroCourse from "@/components/HeroCourse";
 import LearningUnit from "@/components/LearningUnit";
+import Loader from "@/components/Loader";
 import NavCourse from "@/components/NavCourse";
 import AccordionUAs from "@/components/UAS";
 import { useFirebase } from "@/lib/Firebase/useFirebase";
-import { useRouter } from "next/navigation";
-import Loader from "@/components/Loader";
 import { onAuthStateChanged } from "firebase/auth";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 const Id = ({ params }: { params: { [key: string]: string } }) => {
   const { id } = params;
 
   const router = useRouter();
 
-  const { coursesData, setUserSession, userSession, auth } = useFirebase();
+  const {userData, setUserSession, userSession, auth } = useFirebase();
 
-  const courseFind = coursesData?.modules.find(
+  const courseFind = userData?.modules.find(
     (item: any) => item.id.toString() === id.toString()
   );
 
@@ -25,6 +25,10 @@ const Id = ({ params }: { params: { [key: string]: string } }) => {
     let list = onAuthStateChanged(auth, (user) => {
       user ? setUserSession(user) : router.push("/login");
     });
+
+    return () => {
+      list();
+    }
 
   }, []);
 

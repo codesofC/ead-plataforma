@@ -53,9 +53,12 @@ const MyLayout = ({ children }: { children: React.ReactNode }) => {
         //Get the classes relative to the user
         getClasses(data?.courseId)
           .then((course) => {
-            setCoursesData(course);
-            /*const cityRef = doc(db, `students/${uid}`);
-            setDoc(cityRef, course);*/
+            setCoursesData({
+              name: course?.name,
+              totalClasses: course?.totalClasses,
+              totalModules: course?.totalModules,
+              totalSemestre: course?.totalSemestre
+            });
           })
           .catch((error) => {
             console.log("Not course found!");
