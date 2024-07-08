@@ -15,7 +15,7 @@ const Notes = () => {
 
   return (
     <MyLayout>
-      <main className="w-full flex flex-col gap-12 px-2 md:px-6 lg:px-12 my-16">
+      <main className="w-full flex flex-col gap-12 px-4 md:px-6 lg:px-12 my-16">
         <div className="flex flex-col gap-6">
           <h1 className="text-lg lg:text-xl font-bold">Minhas notas</h1>
           <div className="w-full flex flex-col gap-4">
@@ -59,7 +59,7 @@ const Notes = () => {
           {userData?.notes && (
             <div className="w-full flex flex-col gap-6">
               <h1 className="text-lg lg:text-xl font-bold"> Desempenho: </h1>
-              <div className="relative w-full max-h-[40vh] flex items-center justify-center">
+              <div className="relative w-full flex items-center justify-center">
                 <Graph />
               </div>
             </div>

@@ -33,6 +33,8 @@
     --ring: 222.2 84% 4.9%;
 
     --radius: 0.5rem;
+    
+    --chart-1: 173 58% 39%;
   }
 
   .dark {
@@ -66,14 +68,7 @@
   }
 }
 
-@layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
-}
+
 
 .hover-btn-effect{
   @apply text-gray-600 cursor-pointer p-3 rounded-full hover:bg-gray-100;
