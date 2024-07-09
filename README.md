@@ -23,3 +23,11 @@ To run the project in your local environment, follow these steps:
 - Open http://localhost:5173 (or the address shown in your console) in your web browser to view the app.
   
 ## 🖼 Demo Images
+
+![Sem título](https://github.com/codesofC/ead-plataforma/assets/76754023/2105a8bf-c67d-4d74-9ad3-8298d0a47bec)
+
+![Sem título2](https://github.com/codesofC/ead-plataforma/assets/76754023/ee3af96c-ce51-46bc-861e-c169f7a4e188)
+
+![Sem título3](https://github.com/codesofC/ead-plataforma/assets/76754023/a22ab96e-95fd-43b4-9d94-dc2475fc1458)
+
+![Sem título4](https://github.com/codesofC/ead-plataforma/assets/76754023/8b4b3ed3-47de-4ef9-ba7d-b2dc37698130)
