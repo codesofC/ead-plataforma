@@ -24,6 +24,8 @@ To run the project in your local environment, follow these steps:
   
 ## 🖼 Demo Images
 
+![Sem título4](https://github.com/codesofC/ead-plataforma/assets/76754023/c1ea8d99-2511-4684-89ed-ba66d58ae1f9)
+
 ![Sem título](https://github.com/codesofC/ead-plataforma/assets/76754023/2105a8bf-c67d-4d74-9ad3-8298d0a47bec)
 
 ![Sem título2](https://github.com/codesofC/ead-plataforma/assets/76754023/ee3af96c-ce51-46bc-861e-c169f7a4e188)
