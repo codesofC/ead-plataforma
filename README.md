@@ -33,3 +33,5 @@ To run the project in your local environment, follow these steps:
 ![Sem título3](https://github.com/codesofC/ead-plataforma/assets/76754023/a22ab96e-95fd-43b4-9d94-dc2475fc1458)
 
 ![Sem título4](https://github.com/codesofC/ead-plataforma/assets/76754023/8b4b3ed3-47de-4ef9-ba7d-b2dc37698130)
+![chat1](https://github.com/user-attachments/assets/72f9824d-45b6-4a01-918a-d72dfb0aec46)
+![chat2](https://github.com/user-attachments/assets/f7bf9642-8956-42d3-841d-a77550d7d7c6)
