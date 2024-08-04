@@ -17,7 +17,7 @@ The University Platform is a comprehensive web application designed to enhance t
 
 ## 🚦 Run the project
 To run the project in your local environment, follow these steps:
-- Clone the repository to your local machine. `git clone https://github.com/codesofC/chat-app.git`
+- Clone the repository to your local machine. `git clone https://github.com/codesofC/ead-plataforma`
 - Run `npm install`, `yarn` or `pnpm` in the project directory to install the required dependencies.
 - Run `npm run dev` or `yarn` to get the project started.
 - Open [localhost:3000](http://localhost:3000/) (or the address shown in your console) in your web browser to view the app.
