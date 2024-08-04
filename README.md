@@ -1,6 +1,6 @@
-# Chat-Friendly - Chat App
+# USTA - University platform
 
-Chat-Friendly is a realtime chat app built with TypeScript, React, Vite Js, Firebase, and other technologies. This chat app is purposefully made for the web, like a web chat app, working on mobile devices too.
+The University Platform is a comprehensive web application designed to enhance the academic experience for students, faculty, and administrators.
 
 ## 🎈Features
 - 🔑 **Authentication with email and password**
